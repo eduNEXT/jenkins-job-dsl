@@ -30,6 +30,9 @@ job('scan-plugin-updates') {
     }
 
     wrappers {
+        credentialsBinding {
+            string('DEVOPS_SUPPORT_EMAIL', 'DEVOPS_SUPPORT_EMAIL_ACCOUNT')
+        }
         timestamps()
     }
 
@@ -42,8 +45,20 @@ job('scan-plugin-updates') {
     }
 
     publishers {
-        mailer('testeng@edx.org')
-        configure GENERAL_SLACK_STATUS()
+        extendedEmail {
+            recipientList('$DEVOPS_SUPPORT_EMAIL')
+            triggers {
+                failure {
+                    attachBuildLog(false)  
+                    compressBuildLog(false)
+                    subject('Build Jenkins Security updates: ${JOB_NAME}')
+                    content('Security updates for plugins are available on Build jenkins . \n\nSee ${BUILD_URL} for details.')
+                    contentType('text/plain')
+                    sendTo {
+                        recipientList()
+                    }
+                }
+            }
+        }
     }
-
 }
