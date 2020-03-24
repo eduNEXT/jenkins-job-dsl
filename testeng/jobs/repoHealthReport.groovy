@@ -34,13 +34,6 @@ job('repo-health-report') {
     triggers {
         cron('@midnight')
     }
-    wrappers {
-        timestamps()
-        sshAgent('jenkins')
-        credentialsBinding {
-           string('OEP_REPORT_TOKEN', 'GITHUB_STATUS_OAUTH_TOKEN')
-        }
-    }
     steps {
         virtualenv {
             name('repo-health-venv')
