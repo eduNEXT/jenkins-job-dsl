@@ -1,28 +1,30 @@
 package testeng
 
-import static org.edx.jenkins.dsl.JenkinsPublicConstants.JENKINS_PUBLIC_LOG_ROTATOR
+import static
+
+def pytest_repo_health_gitURL = 'https://github.com/jinder1s/pytest-repo-health'
+def edx_repo_health_gitURL = 'https://github.com/jinder1s/edx-repo-health'
 
 job('repo-health-report') {
 
     description('Generate a report listing repository structure standard compliance accross edX repos')
-    logRotator JENKINS_PUBLIC_LOG_ROTATOR()
     concurrentBuild(false)
     label('jenkins-worker')
     scm {
         git {
             remote {
-                url('https://github.com/jinder1s/pytest-repo-health')
+                url(pytest_repo_health_gitURL)
             }
-            branch('*/master')
+            branch('*/msingh/adding_code')
             browser()
         }
     }
     scm{
         git {
             remote {
-                url('hhttps://github.com/jinder1s/edx-repo-health')
+                url(edx_repo_health_gitURL )
             }
-            branch('*/master')
+            branch('*/msingh/chekcs')
             browser()
         }
     }
