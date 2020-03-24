@@ -38,9 +38,11 @@ job('repo-health-report') {
     triggers {
         cron('@midnight')
     }
-    withPythonEnv('python-3.5'){
-    // Uses the ShiningPanda registered Python installation named 'CPython-2.7'
-    shell(readFileFromWorkspace('testeng/resources/create-repo-health-report.sh'))
+    steps{
+        withPythonEnv('python-3.5'){
+        // Uses the ShiningPanda registered Python installation named 'CPython-2.7'
+            shell(readFileFromWorkspace('testeng/resources/create-repo-health-report.sh'))
+        }
     }
 
 }
