@@ -3,6 +3,7 @@ package testeng
 def pytest_repo_health_gitURL = 'https://github.com/jinder1s/pytest-repo-health'
 def edx_repo_health_gitURL = 'https://github.com/jinder1s/edx-repo-health'
 
+
 job('repo-health-report') {
 
     description('Generate a report listing repository structure standard compliance accross edX repos')
@@ -37,10 +38,9 @@ job('repo-health-report') {
     triggers {
         cron('@midnight')
     }
-    steps {
-        steps {
-           shell(readFileFromWorkspace('testeng/resources/create-repo-health-report.sh'))
-        }
+    withPythonEnv('CPython-3.5'){
+    // Uses the ShiningPanda registered Python installation named 'CPython-2.7'
+    shell(readFileFromWorkspace('testeng/resources/create-repo-health-report.sh'))
     }
 
 }
