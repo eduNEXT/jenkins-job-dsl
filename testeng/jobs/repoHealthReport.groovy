@@ -7,6 +7,9 @@ job('repo-health-report') {
 
     description('Generate a report listing repository structure standard compliance accross edX repos')
     concurrentBuild(false)
+    environmentVariables(
+            PYTHON_VERSION: 3.5,
+        )
     multiscm {
         git {
             remote {
@@ -35,11 +38,8 @@ job('repo-health-report') {
         cron('@midnight')
     }
     steps {
-        virtualenv {
-            name('repo-health-venv')
-            nature('shell')
-            clear(true)
-            command(readFileFromWorkspace('testeng/resources/create-repo-health-report.sh'))
+        steps {
+           shell(readFileFromWorkspace('testeng/resources/create-repo-health-report.sh'))
         }
     }
 
