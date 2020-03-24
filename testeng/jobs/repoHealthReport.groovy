@@ -41,21 +41,7 @@ job('repo-health-report') {
             name('repo-health-venv')
             nature('shell')
             clear(true)
-            command(readFileFromWorkspace('testeng/resources/create-oep-report.sh'))
-        }
-    }
-    publishers {
-        archiveJunit('oep2-report.xml') {
-            retainLongStdout(false)
-        }
-        publishHtml {
-            report('.') {
-                allowMissing(true)
-                alwaysLinkToLastBuild(false)
-                keepAll(true)
-                reportFiles('oep2.report.html')
-                reportName('OEP 2 Report')
-            }
+            command(readFileFromWorkspace('testeng/resources/create-health-report.sh'))
         }
     }
 
