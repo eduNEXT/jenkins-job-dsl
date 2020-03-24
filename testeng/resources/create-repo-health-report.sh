@@ -1,5 +1,3 @@
-#!/bin/bash
-set -e
 
 virtualenv --python=python$PYTHON_VERSION venv -q
 source venv/bin/activate
