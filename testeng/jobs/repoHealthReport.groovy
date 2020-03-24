@@ -41,7 +41,7 @@ job('repo-health-report') {
             name('repo-health-venv')
             nature('shell')
             clear(true)
-            command(readFileFromWorkspace('testeng/resources/create-health-report.sh'))
+            command(readFileFromWorkspace('testeng/resources/create-repo-health-report.sh'))
         }
     }
 
