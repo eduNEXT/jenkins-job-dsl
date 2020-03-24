@@ -8,7 +8,7 @@ job('repo-health-report') {
     description('Generate a report listing repository structure standard compliance accross edX repos')
     concurrentBuild(false)
     label('jenkins-worker')
-    scm {
+    multiscm {
         git {
             remote {
                 url(pytest_repo_health_gitURL)
@@ -16,8 +16,6 @@ job('repo-health-report') {
             branch('*/msingh/adding_code')
             browser()
         }
-    }
-    scm{
         git {
             remote {
                 url(edx_repo_health_gitURL )
