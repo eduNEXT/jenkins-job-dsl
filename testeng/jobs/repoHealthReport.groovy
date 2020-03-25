@@ -7,7 +7,10 @@ def edx_repo_health_gitURL = 'https://github.com/jinder1s/edx-repo-health'
 job('repo-health-report') {
 
     description('Generate a report listing repository structure standard compliance accross edX repos')
-    parameter_hah = buildParameters("blah")
+    parameters {
+        stringParam('Github Repo URL', 'https://github.com/edx/edx-platform',
+                    'Github repo url on which to run pytest-repo-health checks')
+    }
     concurrentBuild(false)
     multiscm {
         git {
