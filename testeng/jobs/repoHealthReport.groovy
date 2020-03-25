@@ -2,11 +2,12 @@ package testeng
 
 def pytest_repo_health_gitURL = 'https://github.com/jinder1s/pytest-repo-health'
 def edx_repo_health_gitURL = 'https://github.com/jinder1s/edx-repo-health'
-def parameter_haha =  buildParameters(String parameter = "blah")
+
 
 job('repo-health-report') {
 
     description('Generate a report listing repository structure standard compliance accross edX repos')
+    buildParameters(parameter = "blah")
     concurrentBuild(false)
     environmentVariables(
             PYTHON_VERSION: 3.5,
