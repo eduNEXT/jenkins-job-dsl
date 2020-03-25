@@ -8,6 +8,7 @@ job('repo-health-report') {
 
     description('Generate a report listing repository structure standard compliance accross edX repos')
     concurrentBuild(false)
+    buildParameters(String parameter = "blah")
     environmentVariables(
             PYTHON_VERSION: 3.5,
         )
