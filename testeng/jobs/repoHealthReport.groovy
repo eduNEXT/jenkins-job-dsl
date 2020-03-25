@@ -8,7 +8,7 @@ job('repo-health-report') {
 
     description('Generate a report listing repository structure standard compliance accross edX repos')
     parameters {
-        stringParam('Github Repo URL', 'https://github.com/edx/edx-platform',
+        stringParam('GITHUB_REPO_URL', 'https://github.com/edx/edx-platform',
                     'Github repo url on which to run pytest-repo-health checks')
     }
     concurrentBuild(false)
@@ -33,6 +33,17 @@ job('repo-health-report') {
             extensions {
                 cleanAfterCheckout()
                 relativeTargetDirectory('edx-repo-health')
+            }
+        }
+        git {
+            remote {
+                url('\${GITHUB_REPO_URL}')
+            }
+            branch('*/master')
+            browser()
+            extensions {
+                cleanAfterCheckout()
+                relativeTargetDirectory('target_repo')
             }
         }
     }
