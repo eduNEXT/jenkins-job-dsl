@@ -2,7 +2,7 @@ package testeng
 
 def pytest_repo_health_gitURL = 'https://github.com/jinder1s/pytest-repo-health'
 def edx_repo_health_gitURL = 'https://github.com/jinder1s/edx-repo-health'
-def parameter =     buildParameters(String parameter = "blah")
+def parameter_haha =  buildParameters(String parameter = "blah")
 
 job('repo-health-report') {
 
