@@ -7,11 +7,8 @@ def edx_repo_health_gitURL = 'https://github.com/jinder1s/edx-repo-health'
 job('repo-health-report') {
 
     description('Generate a report listing repository structure standard compliance accross edX repos')
-    buildParameters(parameter = "blah")
+    parameter_hah = buildParameters("blah")
     concurrentBuild(false)
-    environmentVariables(
-            PYTHON_VERSION: 3.5,
-        )
     multiscm {
         git {
             remote {
