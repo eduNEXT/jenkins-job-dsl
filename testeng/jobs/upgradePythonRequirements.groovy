@@ -149,6 +149,16 @@ Map edxGomatic = [
     emails: ['devops@edx.org']
 ]
 
+Map edxMilestones = [
+    org: 'edx',
+    repoName: 'edx-milestones',
+    pythonVersion: '3.5',
+    cronValue: cronOffHoursBusinessWeekday,
+    githubUserReviewers: ['azarembok'],
+    githubTeamReviewers: [],
+    emails: ['arch-bom@edx.org']
+]
+
 Map edxNotesApi = [
     org: 'edx',
     repoName: 'edx-notes-api',
@@ -314,6 +324,7 @@ List jobConfigs = [
     edxAnalyticsDashboard,
     edxAnalyticsDataApi,
     edxGomatic,
+    edxMilestones,
     edxNotesApi,
     edxOrganizations,
     edxPlatform,
